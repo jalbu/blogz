@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style type="text/css">
+    .error {
+        color: red;
+    }
+</style>
+<h1>Add a blog post</h1>
+<form action=/newpost method='post'>
+    <table>
+        <tr>
+            <td>
+                <label>Title</label>
+            </td>
+            <td>
+                <input name="title" type='text'>
+            </td>
+            <td class='error'>
+                {{title_error}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Content</label>
+            </td>
+            <td>
+                <textarea name='content' row='4' column='50'></textarea>
+            </td>
+            <td class='error'>
+                {{content_error}}
+            </td>
+        </tr>
+    </table>
+    <input type='submit' value='Add'>
+</form>
+
+{% endblock %}
