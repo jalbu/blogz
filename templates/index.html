@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+    {% if user_list|length == 0 %}
+    <h3>No Users found</h3>
+    
+    {%else%}
+        <h2>List of Users in Database</h2>
+        <ul>
+            {% for user in user_list %}
+            <li>
+                <h2>
+                    <a href="/detail?user={{user.id}}">{{user.username}}</a>
+                </h2>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+{% endblock %}

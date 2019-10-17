@@ -6,14 +6,39 @@
             .error {
                 color: red;
             }
+            nav div{
+                padding: 0;
+                display: inline-block;
+                list-style: none;
+            }
+            .login {
+                list-style: none;
+                float: right;
+            }
+            body {
+                font-family: sans-serif;
+                width: 800px;
+                margin: 0 auto;
+                padding: 10px;
+            } 
         </style>
     </head>
 <body>
 
-    <div>
-        <a href='/blog'>Main Blog Page</a>
-        <a href='/newpost'>Add a Blog Entry</a>
-    </div>
+    <nav>
+        <div>
+            <a href='/'>Home</a>
+            <a href='/blog'>All Posts</a>
+            <a href='/newpost'>Add a Blog Entry</a>
+        </div>
+        <div class='login'>
+            {% if session['username'] %}
+            Hello, <b>{{ session['username'] }}</b>
+            {% endif %}
+            <a href='/login'>Login</a>
+            <a href='logout'>Logout</a>
+        </div>
+    </nav>
     {% block content %}
     {% endblock %}
 

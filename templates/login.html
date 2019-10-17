@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>In order to continue, please sign in:</h2>
+<form method="post">
+    <table>
+        <tbody>
+            <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username" value="{{username}}"/></td>
+                <td class=error>{{ user_error }}</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" value="{{password}}"/></td>
+                <td class=error>{{ pass_error }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href='/signup'>Create a New User</a>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

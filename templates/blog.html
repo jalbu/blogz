@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Build a Blog</h1>
 
 {% if blog_posts|length == 0%}
 <p>No blog posts</p>
@@ -10,9 +9,10 @@
     {% for post in blog_posts %}
     <li>
         <h2>
-            <a href="/detail?id={{post.id}}">{{post.title}}</a>
+            <a href="/detail?id={{post['post'].id}}">{{post['post'].title}}</a>
         </h2>
-        <p>{{post.content}}</p>
+        <p>{{post['post'].content}}</p>
+        <i>Created by <a href="/detail?user={{post['post'].owner_id}}">{{post['user']}}</a></i>
     </li>
     {% endfor %}
 </ul>

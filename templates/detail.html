@@ -1,8 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h2>{{post.title}}</h2>
-<p>{{post.content}}</p>
-
+{% if post %}
+    <h1>Post Details:</h1>
+    <h2>{{post.title}}</h2>
+    <p>{{post.content}}</p>
+    <br>
+    <a href='/detail?user={{post.owner_id}}'>Go to {{username}}'s blog posts</a>
+{% elif user_post_list != [] %} 
+    <h1>Showing Blog Posts for {{user.username}}</h1>    
+    <ul>
+        {% for post in user_post_list %}
+        <li>
+            <h2><a href="/detail?id={{post.id}}">{{post.title}}</a></h2>
+            <p>{{post.content}}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% elif user_post_list == [] %}
+    <h1>{{user.username}} doesn't have any posts</h1>
+{% endif %}
 {% endblock %}
